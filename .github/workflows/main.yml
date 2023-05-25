@@ -164,13 +164,13 @@ jobs:
         CMAKE_BUILD_TYPE: "RelWithDebInfo"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
-    - name: "Packaging"
-      shell: bash
-      run: |
-        mkdir "${{ github.workspace }}/build/package"
-        cmake --build "${{ github.workspace }}/build/ci" --config RelWithDebInfo --target PACKAGE_7Z
     - name: "Artifacts"
       uses: actions/upload-artifact@v1
       with:
-        name: "${{ matrix.runner }}-${{ matrix.generator }}-qt${{ matrix.qt }}"
-        path: "${{ github.workspace }}/build/package"
+        name: "RelWithDebInfo"
+        path: "${{ github.workspace }}/build/ci/RelWithDebInfo"
+    - name: "Artifacts"
+      uses: actions/upload-artifact@v1
+      with:
+        name: "Debug"
+        path: "${{ github.workspace }}/build/ci/Debug"
