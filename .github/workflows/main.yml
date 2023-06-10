@@ -167,6 +167,11 @@ jobs:
     - name: "Artifacts"
       uses: actions/upload-artifact@v1
       with:
+        name: "${{ matrix.runner }}-${{ matrix.generator }}-qt${{ matrix.qt }}"
+        path: "${{ github.workspace }}/build/package"
+    - name: "Artifacts"
+      uses: actions/upload-artifact@v1
+      with:
         name: "RelWithDebInfo"
         path: "${{ github.workspace }}/build/ci/RelWithDebInfo"
     - name: "Artifacts"
